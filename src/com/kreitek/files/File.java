@@ -1,6 +1,7 @@
 package com.kreitek.files;
 
-import com.kreitek.files.error.InvalidFileFormatException;
+import com.kreitek.exceptions.InvalidFileFormatException;
+import com.kreitek.interfaces.FileSystemItem;
 
 import java.util.List;
 
