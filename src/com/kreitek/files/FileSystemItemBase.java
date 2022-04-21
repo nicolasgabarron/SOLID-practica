@@ -35,10 +35,12 @@ public abstract class FileSystemItemBase implements FileSystemItem {
         if (directory != null && !(directory instanceof Directory)) {
             throw new IllegalArgumentException("El padre solo puede ser un directorio");
         }
+        Directory par = (Directory) parent;
+        Directory dir = (Directory) directory;
         if (this.parent != directory) {
-            if (this.parent != null) this.parent.removeFile(this);
+            if (this.parent != null) par.removeFile(this);
             this.parent = directory;
-            if (directory != null) directory.addFile(this);
+            if (directory != null) dir.addFile(this);
         }
     }
 

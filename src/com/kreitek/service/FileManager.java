@@ -14,7 +14,8 @@ public class FileManager {
         if (fileSystemItem instanceof File) {
             totalSize = fileSystemItem.getSize();
         } else if (fileSystemItem instanceof Directory) {
-            for (FileSystemItem item : fileSystemItem.listFiles()) {
+            Directory dir = (Directory) fileSystemItem;
+            for (FileSystemItem item : dir.listFiles()) {
                 totalSize += calculateSize(item);
             }
         }
@@ -29,7 +30,8 @@ public class FileManager {
             if (item instanceof File) {
                 totalSize += item.getSize();
             } else if (item instanceof Directory) {
-                totalSize += calculateSize(item.listFiles());
+                Directory dir = (Directory) item;
+                totalSize += calculateSize(dir.listFiles());
             }
         }
 

@@ -17,8 +17,14 @@ public class FileSystemPrinter {
         String message = String.format("%s%s = %d bytes", indentation, item.getFullPath(), FileManager.calculateSize(item));
         System.out.println(message);
 
+        /*
+        TODO: PRINCIPIO DEPENDENCY INVERSION.
+        TODO: Utilizaría Factorías o Builder para crear el objeto Directory.
+        Para este caso he cambiado los tipos de instancias específicos.
+         */
         if (item instanceof Directory) {
-            for (FileSystemItem subitem: item.listFiles()) {
+            Directory dir = (Directory) item;
+            for (FileSystemItem subitem: dir.listFiles()) {
                 FileSystemPrinter.print(subitem, nivel + 1);
             }
         }
